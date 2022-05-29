@@ -66,7 +66,7 @@ passport.use(
 const mongoose = require("mongoose");
 const connection = mongoose.connection;
 
-app.set("port", process.env.port || 3000);
+app.set("port", process.env.PORT || 3000);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -90,9 +90,12 @@ app.use(function (req, res) {
 });
 
 // useNewUrlParser to avoid de deprecation warning
-mongoose.connect("mongodb://localhost:27017/pangolin-2", {
-  useNewUrlParser: true,
-});
+mongoose.connect(
+  "mongodb+srv://paul-admin:WSaQx73EDeiICFnP@cluster0.lfmet.mongodb.net/pangolin",
+  {
+    useNewUrlParser: true,
+  }
+);
 
 connection.on("error", (err) => {
   console.error(`connection to MongoDB error: ${err.message}`); // eslint-disable-line no-console
