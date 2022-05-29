@@ -104,7 +104,7 @@ connection.on("error", (err) => {
 connection.once("open", () => {
   console.log("Connected to MongoDB"); // eslint-disable-line no-console
 
-  app.listen(app.get("port"), () => {
+  app.listen(app.get(process.env.PORT), () => {
     console.log(`Express server listening on port ${app.get("port")}`); // eslint-disable-line no-console
   });
 });
