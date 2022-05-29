@@ -90,12 +90,9 @@ app.use(function (req, res) {
 });
 
 // useNewUrlParser to avoid de deprecation warning
-mongoose.connect(
-  "mongodb+srv://paul-admin:WSaQx73EDeiICFnP@cluster0.lfmet.mongodb.net/pangolin",
-  {
-    useNewUrlParser: true,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+});
 
 connection.on("error", (err) => {
   console.error(`connection to MongoDB error: ${err.message}`); // eslint-disable-line no-console
@@ -104,7 +101,7 @@ connection.on("error", (err) => {
 connection.once("open", () => {
   console.log("Connected to MongoDB"); // eslint-disable-line no-console
 
-  app.listen(app.get(process.env.PORT), () => {
+  app.listen(app.get("port"), () => {
     console.log(`Express server listening on port ${app.get("port")}`); // eslint-disable-line no-console
   });
 });
