@@ -90,7 +90,7 @@ app.use(function (req, res) {
 });
 
 // useNewUrlParser to avoid de deprecation warning
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect("mongodb://localhost:27017/pangolin-2", {
   useNewUrlParser: true,
 });
 
@@ -101,7 +101,7 @@ connection.on("error", (err) => {
 connection.once("open", () => {
   console.log("Connected to MongoDB"); // eslint-disable-line no-console
 
-  app.listen(app.get(process.env.PORT), () => {
+  app.listen(app.get("port"), () => {
     console.log(`Express server listening on port ${app.get("port")}`); // eslint-disable-line no-console
   });
 });
