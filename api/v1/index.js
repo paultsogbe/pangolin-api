@@ -6,6 +6,7 @@ const multer = require("multer");
 const crypto = require("crypto");
 const path = require("path");
 const resize = require("../utils/resize");
+require("dotenv").config();
 
 router.get("/ping", (req, res) => {
   res.status(200).json({ msg: "pong", date: new Date() });
